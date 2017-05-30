@@ -1,0 +1,49 @@
+<div class="row-fluid col-xs-12 well well-sm">
+    <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">搜索</button>
+    </form>
+</div>
+
+<div class="row-fluid">
+    <{if empty($list)}>
+        <p align="center">没有记录</p>
+    <{else}>
+        <table class="table table-bordered table-striped">
+            <colgroup>
+                <col class="col-xs-1">
+                <col class="col-xs-7">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th id="sb1">流水号</th>
+                    <th>IP</th>
+                    <th>访问时间</th>
+                    <th>URL</th>
+                    <th>游客标识</th>
+                </tr>
+            </thead>
+            <tbody>
+                <{foreach $list as $k => $v}>
+                <tr>
+                    <th scope="row">
+                        <code><{$v.id}></code>
+                    </th>
+                    <td><{$v.ip}></td>
+                    <td><{date('Y-m-d H:i:s', $v.vtime)}></td>
+                    <td style="overflow-x: auto;">http://fdsafdslfjdsiofjfdsa.com/fdsafdsfji.html</td>
+                    <td><{$v.cookie}></td>
+                </tr>
+                <{/foreach}>
+            </tbody>
+        </table>
+    <{/if}>
+</div>
+
+<script>
+setInterval(function(){
+    $('#sb').css('width', '600px !important');
+}, 500);
+</script>
