@@ -2,7 +2,7 @@
 
 class ManageController extends BaseController {
     
-    function actionIndex(){
+    public function actionIndex(){
         $p = arg('p', 1);
         $limit = arg('limit', 10);
         $queryRs = obj('SeniorModel')->seniorSelect(array(
@@ -13,6 +13,50 @@ class ManageController extends BaseController {
         ));
         $this->list = $queryRs['list'];
         $this->pages = $queryRs['pages'];
+    }
+
+
+    public function actionLogin(){
+        if ($this->isPost()) {
+            $passport = arg('passport');
+            $password = arg('password');
+            if (empty($passport) || empty($password)) {
+                $this->alert('通行证或口令为空');
+            }
+            $admin = obj('Admin')->find(array('passport' => $passport)) ?: array();
+            if (empty($admin)) {
+                $this->alert('通行证不存在');
+            }
+            $saltPassword = obj('Admin')->getSaltPassword($password);
+            if ($saltPassword != $admin['password']) {
+                $this->alert('通行证或口令错误');
+            }
+            obj('Admin')->setLoginInfoCache($admin['admin_id']);
+            header("Location: " . url('manage/index'));
+            exit;
+        }
+        $this->layout = '';
+    }
+
+
+    public function actionLogout(){
+        obj('Admin')->delLoginInfoCache();
+        header("Location: " . url('manage/login'));
+    }
+
+
+    public function actionAddAdmin(){
+        $passport = arg('passport');
+        $password = arg('password');
+        if (empty($passport) || empty($password)) {
+            die('0');
+        }
+        if (obj('Admin')->find(array('passport' => $passport))) {
+            die('-1');
+        }
+        $password = obj('Admin')->getSaltPassword($password);
+        obj('Admin')->insert(compact('passport', 'password'));
+        exit('1');
     }
 
 }
