@@ -1,8 +1,9 @@
 var baseDomain = (location.href.match(/^https?\:\/\/(\w+(\.\w+)+)\/?/) || [,'']) [1];
 var reportUrl = '';
 switch (baseDomain) {
-    case 'www.antijoy.com':
-        reportUrl = 'http://log.antijoy.com/report';
+    case 'fengzhang.com':
+    case 'www.fengzhang.com':
+        reportUrl = 'http://log.fengzhang.com/report';
         break;
     case 'project1.yooo.moe':
         reportUrl = 'http://project1-log.yooo.moe/report';
