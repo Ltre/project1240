@@ -10,7 +10,7 @@ else
 	git pull
 fi
 
-mv /home/wwwroot/www.antjoys.com /home/wwwroot/www.antjoys.com.trash
-cp /home/wwwsrc/project1240/frontend -r /home/wwwroot/www.antjoys.com
-rm -f -r /home/wwwroot/www.antjoys.com.trash
-cd /home/wwwroot/www.antjoys.com
+mv /home/wwwroot/www.fengzhang.com /home/wwwroot/www.fengzhang.com.trash
+cp /home/wwwsrc/project1240/frontend -r /home/wwwroot/www.fengzhang.com
+rm -f -r /home/wwwroot/www.fengzhang.com.trash
+cd /home/wwwroot/www.fengzhang.com
