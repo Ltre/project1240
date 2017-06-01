@@ -6,13 +6,15 @@ class Tourist extends Model {
 
     function append($uid = 0){
         $url = $_SERVER['HTTP_REFERER'] ?: '';
-        $this->insert(array(
-            'ip' => getIP(),
-            'vtime' => time(),
-            'uid' => $uid,
-            'url' => $url,
-            'cookie' => $this->getCookie(),
-        ));
+        if (! empty($url)) {
+            $this->insert(array(
+                'ip' => getIP(),
+                'vtime' => time(),
+                'uid' => $uid,
+                'url' => $url,
+                'cookie' => $this->getCookie(),
+            ));
+        }
     }
 
     protected function getCookie(){
