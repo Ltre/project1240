@@ -7,7 +7,7 @@ $config = array(
 
 $setting = array(
     "log.fengzhang.com" => array(
-        'debug' => 1,
+        'debug' => 0,
         'rewrite' => array(
             'report' => 'log/report',
             'manage' => 'manage/index',
