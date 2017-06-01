@@ -38,6 +38,18 @@ class ManageController extends BaseController {
     }
 
 
+    public function actionRootist(){
+        die($this->layout);
+        echo 1;
+    }
+
+
+    public function actionPassword(){
+        die($this->layout);
+        echo 1;
+    }
+
+
     public function actionLogin(){
         if ($this->isPost()) {
             $passport = arg('passport');

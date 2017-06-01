@@ -22,9 +22,9 @@
         </div>
         <div class="row-fluid">
             <ul class="col-xs-2 nav nav-pills nav-stacked">
-                  <li role="presentation" class="active"><a href="?r=manage/index">访问日志</a></li>
-                  <li role="presentation"><a href="?r=manage/rootist">审计日志</a></li>
-                  <li role="presentation"><a href="?r=manage/password">修改密码</a></li>
+                  <li role="presentation" class="<{if $route eq 'manage/index'}>active<{/if}>"><a href="?r=manage/index">访问日志</a></li>
+                  <li role="presentation" class="<{if $route eq 'manage/rootist'}>active<{/if}>"><a href="?r=manage/rootist">审计日志</a></li>
+                  <li role="presentation" class="<{if $route eq 'manage/password'}>active<{/if}>"><a href="?r=manage/password">修改密码</a></li>
                   <li role="presentation"><a href="?r=manage/logout">退出</a></li>
             </ul>
             <div class="col-xs-10">
