@@ -151,7 +151,7 @@ function obj($className, $args=array(), $filePath="", $forceInstance=false){
 }
 
 function dump($var, $exit = false){
-	$output = var_export($var, true);
+	$output = print_r($var, true);
 	if(!DEBUG)return error_log(str_replace("\n", '', $output));
 	$content = "<div align=left><pre>\n" .htmlspecialchars($output). "\n</pre></div>\n";
 	echo "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">";
