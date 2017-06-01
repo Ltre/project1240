@@ -16,6 +16,7 @@ if [ ! -d "/home/wwwroot/project1.yooo.moe" ]; then
 fi
 mv /home/wwwroot/project1.yooo.moe /home/wwwroot/project1.yooo.moe.trash
 cp /home/wwwsrc/project1240/frontend -r /home/wwwroot/project1.yooo.moe
+chmod -R 767 /home/wwwroot/project1.yooo.moe/protected/data
 rm -f -r /home/wwwroot/project1.yooo.moe.trash
 cd /home/wwwroot/project1.yooo.moe
 
@@ -25,6 +26,7 @@ if [ ! -d "/home/wwwroot/project1-log.yooo.moe" ]; then
 fi
 mv /home/wwwroot/project1-log.yooo.moe /home/wwwroot/project1-log.yooo.moe.trash
 cp /home/wwwsrc/project1240/backend -r /home/wwwroot/project1-log.yooo.moe
+chmod -R 767 /home/wwwroot/project1-log.yooo.moe/protected/data
 rm -f -r /home/wwwroot/project1-log.yooo.moe.trash
 cd /home/wwwroot/project1-log.yooo.moe
 
