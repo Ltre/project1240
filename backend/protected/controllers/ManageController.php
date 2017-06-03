@@ -39,8 +39,38 @@ class ManageController extends BaseController {
 
 
     public function actionRootist(){
-        die($this->layout);
-        echo 1;
+        $p = arg('p', 1);
+        $limit = arg('limit', 10);
+        $start = arg('start');
+        $end = arg('end');
+        $keyword = arg('keyword');
+        $where = ['AND'];
+        if ($start) $where[] = ['vtime', '>=', strtotime($start)];
+        if ($end) $where[] = ['vtime', '<=', strtotime($end)];
+        if ($keyword) {
+            $keywordConds = [
+                'OR',
+                ['r.ip', 'like', "%{$keyword}%"],
+                ['r.url', 'like', "%{$keyword}%"],
+            ];
+            if (intval($keyword)) {
+                $keywordConds[] = ['r.admin_id', '=', intval($keyword)];
+                $keywordConds[] = ['r.id', '=', intval($keyword)];
+            }
+            $where[] = $keywordConds;
+        }
+        $queryRs = obj('SeniorModel')->seniorSelect(array(
+            'select' => 'r.*, a.passport, a.username',
+            'from' => 'rootist r JOIN `admin` a ON r.admin_id = a.admin_id',
+            'where' => $where,
+            'orderBy' => 'id DESC',
+            'limitBy' => [$p, $limit, 10],
+        ));
+        $this->start = $start;
+        $this->end = $end;
+        $this->keyword = $keyword;
+        $this->list = $queryRs['list'];
+        $this->pages = $queryRs['pages'];
     }
 
 
@@ -91,6 +121,12 @@ class ManageController extends BaseController {
         $password = obj('Admin')->getSaltPassword($password);
         obj('Admin')->insert(compact('passport', 'password'));
         exit('1');
+    }
+
+
+    //记录审计日志
+    function actionReportAdmin(){
+        obj('Rootist')->append($this->adminId);
     }
 
 }
