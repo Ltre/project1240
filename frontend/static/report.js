@@ -1,4 +1,4 @@
-var baseDomain = (location.href.match(/^https?\:\/\/(\w+(\.\w+)+)\/?/) || [,'']) [1];
+var baseDomain = (location.href.match(/^https?\:\/\/(\w+(\.[\-\w]+)+)\/?/) || [,'']) [1];
 var reportUrl = '';
 switch (baseDomain) {
     case 'fengzhang.com':
