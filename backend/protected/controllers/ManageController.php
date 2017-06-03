@@ -75,8 +75,22 @@ class ManageController extends BaseController {
 
 
     public function actionPassword(){
-        die($this->layout);
-        echo 1;
+        if ($this->isPost()) {
+            $raw = arg('raw');
+            $new = arg('new');
+            $admin = obj('Admin')->find(array('admin_id' => $this->adminId));
+            if (empty($admin)) {
+                $this->alert('管理员不存在');
+            }
+            $saltPassword = obj('Admin')->getSaltPassword($raw);
+            if ($saltPassword != $admin['password']) {
+                $this->alert('原密码错误');
+            }
+            $newSaltPassword = obj('Admin')->getSaltPassword($new);
+            $rs = obj('Admin')->update(array('admin_id' => $this->adminId), array('password' => $newSaltPassword));
+            $success = $rs !== false;
+            $this->alert($success ? '修改成功' : '修改失败');
+        }
     }
 
 
