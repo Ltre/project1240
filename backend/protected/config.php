@@ -28,6 +28,7 @@ $setting = array(
         'debug' => 1,
         'rewrite' => array(
             'report' => 'log/report',
+            'reportAdmin' => 'manage/reportAdmin',
             'manage' => 'manage/index',
             'login' => 'manage/login',
             '<c>/<a>' => '<c>/<a>',
