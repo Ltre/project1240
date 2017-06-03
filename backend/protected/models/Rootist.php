@@ -9,7 +9,7 @@ class Rootist extends Model {
         $this->insert(array(
             'ip' => getIP(),
             'vtime' => time(),
-            'adminId' => $adminId,
+            'admin_id' => $adminId,
             'url' => $url,
         ));
     }
