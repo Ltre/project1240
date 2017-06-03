@@ -10,7 +10,7 @@ class ManageController extends BaseController {
         $keyword = arg('keyword');
         $where = ['AND'];
         if ($start) $where[] = ['vtime', '>=', strtotime($start)];
-        if ($end) $where[] = ['vtime', '>=', strtotime($end)];
+        if ($end) $where[] = ['vtime', '<=', strtotime($end)];
         if ($keyword) {
             $keywordConds = [
                 'OR',
