@@ -24,7 +24,7 @@ class BaseController extends Controller{
     );
 
     public function init(){
-        $this->baseWebPath = 'http://'.$_SERVER['HTTP_HOST'].rtrim(dirname($_SERVER['PHP_SELF']));//如“http://127.0.0.1/a/b”或"http://www.abc.com"，无“/”结尾
+        $this->baseWebPath = 'http://'.$_SERVER['HTTP_HOST'].rtrim(dirname($_SERVER['PHP_SELF']), '/');//如“http://127.0.0.1/a/b”或"http://www.abc.com"，无“/”结尾
         $GLOBALS['controller'] = $this;
         $lgInfo = obj('Admin')->getLoginInfoCache();
         $this->lgInfo = $lgInfo;
