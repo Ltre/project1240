@@ -143,4 +143,15 @@ class ManageController extends BaseController {
         obj('Rootist')->append($this->adminId);
     }
 
+
+    function actionReportNum(){
+        $cookieQueryRs = obj('Tourist')->query('SELECT COUNT(1) `cnt` FROM ( SELECT 1 FROM tourist GROUP BY `cookie`) AS tmp') ?: array();
+        $data = array(
+            'touristNum' => (int) obj("Tourist")->count() ?: 0,
+            'rootistNum' => (int) obj("Rootist")->count() ?: 0,
+            'cookieNum' => (int) $cookieQueryRs[0]['cnt'] ?: 0,
+        );
+        $this->jsonOutput(array('rs' => true, 'code' => 0, 'data' => $data));
+    }
+
 }

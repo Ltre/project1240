@@ -23,7 +23,7 @@
     <div class="container-fluid">
         <br>
         <div class="row-fluid well">
-            <h1 align="center">风杖网络管理后台</h1>
+            <h1 align="center">风杖网络后台</h1>
         </div>
         <div class="row-fluid">
             <ul class="col-xs-2 nav nav-pills nav-stacked">
@@ -31,6 +31,11 @@
                   <li role="presentation" class="<{if $route eq 'manage/rootist'}>active<{/if}>"><a href="<{url r='manage/rootist'}>">审计日志</a></li>
                   <li role="presentation" class="<{if $route eq 'manage/password'}>active<{/if}>"><a href="<{url r='manage/password'}>">修改密码</a></li>
                   <li role="presentation"><a href="<{url r='manage/logout'}>">退出</a></li>
+                  <li class="well" role="presentation">
+                      <p>历史游客总数：<span id="diy-cookie-num">0</span></p>
+                      <p>历史访问总数：<span id="diy-tourist-num">0</span></p>
+                      <p>历史审计总数：<span id="diy-rootist-num">0</span></p>
+                  </li>
             </ul>
             <div class="col-xs-10">
                 <{include file=<{$__template_file}>}>
@@ -39,6 +44,8 @@
     </div>
 
     <{include file="common/report_admin.html"}>
+
+    <{include file="common/report_num.html"}>
 
 </body>
 </html>
