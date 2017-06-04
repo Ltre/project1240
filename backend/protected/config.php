@@ -9,9 +9,9 @@ $setting = array(
     "log.fengzhang.com" => array(
         'debug' => 0,
         'rewrite' => array(
+            'admin' => 'manage/index',
             'reportAdmin' => 'manage/reportAdmin',
             'report' => 'log/report',
-            'manage' => 'manage/index',
             'login' => 'manage/login',
             '<c>/<a>' => '<c>/<a>',
         ),
@@ -27,9 +27,9 @@ $setting = array(
     "project1-log.yooo.moe" => array(
         'debug' => 1,
         'rewrite' => array(
+            'admin' => 'manage/index',
             'reportAdmin' => 'manage/reportAdmin',
             'report' => 'log/report',
-            'manage' => 'manage/index',
             'login' => 'manage/login',
             '<c>/<a>' => '<c>/<a>',
         ),
