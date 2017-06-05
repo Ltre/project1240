@@ -17,7 +17,6 @@ class BaseController extends Controller{
     );
 
     private $_routesExcludeAdmin = array(
-        '/^test\/hehe$/',
         '/^manage\/login$/',
         '/^manage\/logout$/',
         '/^manage\/addadmin$/',
